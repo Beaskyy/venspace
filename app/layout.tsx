@@ -13,6 +13,12 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+// const redHatDisplay = localFont({
+//   src: "./fonts/",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+
 export const metadata: Metadata = {
   title: "Venspace",
   description: "Venspace | Vacation rentals, cabins, beach houses & more",
