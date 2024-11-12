@@ -22,7 +22,7 @@ export const Header = () => {
           <Image src="/arrow-down.png" alt="logo" width={12} height={6.75} />
         </div>
       </div>
-      <div className="lg:hidden flex justify-center items-center">
+      <div className="lg:hidden flex justify-center items-center z-50">
         <AlignJustify className="size-6" />
       </div>
     </div>
