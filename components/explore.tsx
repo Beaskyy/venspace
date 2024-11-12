@@ -2,7 +2,7 @@ import { explore } from "@/lib/data";
 
 export const Explore = () => {
   return (
-    <div className="lg:p-[72px] md:p-8 p-4">
+    <div className="lg:px-[72px] lg:pt-[72px] md:p-8 p-4">
       <h4 className="lg:text-[28px] md:text-2xl text-xs text-[#001224] font-bold">
         Explore spaces in the most popular areas in Lagos
       </h4>
