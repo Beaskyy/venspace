@@ -48,3 +48,31 @@ export const explore = [
     locationNumber: 25,
   },
 ];
+
+export const spaces = [
+  {
+    image: "/party.jpeg",
+    name: "Party",
+    spaceNumber: 10,
+  },
+  {
+    image: "/content.jpeg",
+    name: "Content",
+    spaceNumber: 5,
+  },
+  {
+    image: "/podcast.jpeg",
+    name: "Podcasts",
+    spaceNumber: 10,
+  },
+  {
+    image: "/meetings.jpeg",
+    name: "Meetings",
+    spaceNumber: 25,
+  },
+  {
+    image: "/popup.png",
+    name: "Popup",
+    spaceNumber: 25,
+  },
+];

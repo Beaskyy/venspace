@@ -42,7 +42,7 @@ export const Hero = () => {
       </div>
 
       {/* Dots with progress bar for active dot */}
-      <div className="absolute bottom-[142px] left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute lg:bottom-[142px] bottom-24 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
           <button
             key={index}
