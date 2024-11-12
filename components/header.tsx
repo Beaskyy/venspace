@@ -5,13 +5,13 @@ import Image from "next/image";
 export const Header = () => {
   return (
     <div className="flex justify-between py-4 lg:px-[72px] px-4">
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 z-50">
         <Image src="/logo.png" alt="logo" width={64} height={64} />
         <div>
           <p className="hidden lg:block text-white">Browse Spaces</p>
         </div>
       </div>
-      <div className="hidden lg:flex items-center">
+      <div className="hidden lg:flex items-center z-50">
         <Button>Become a Host</Button>
         <div className="px-3 py-2 flex items-center gap-1">
           <div className="relative size-9 rounded-full bg-[url('/profile.png')] bg-cover bg-center">
