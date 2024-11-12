@@ -25,3 +25,26 @@ export const slides = [
     highlight: "Lagos, Nigeria",
   },
 ];
+
+export const explore = [
+  {
+    image: "/ikoyi-link-bridge.jpeg",
+    name: "Ikoyi",
+    locationNumber: 7,
+  },
+  {
+    image: "/yaba.jpeg",
+    name: "Yaba",
+    locationNumber: 5,
+  },
+  {
+    image: "/ikeja.png",
+    name: "Ikeja",
+    locationNumber: 10,
+  },
+  {
+    image: "/lekki-bridge.jpeg",
+    name: "Lekki",
+    locationNumber: 25,
+  },
+];
