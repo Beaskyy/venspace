@@ -12,8 +12,13 @@ body {
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Red Hat Display", sans-serif;
+@font-face {
+  font-family: "Red Hat Display";
+  src: url("./fonts/RedHatDisplay-VariableFont_wght.ttf") format("woff2");
+}
+
+* {
+  font-family: "Red Hat Display", sans-serif !important;
 }
 
 @layer base {
@@ -90,4 +95,3 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 }
-

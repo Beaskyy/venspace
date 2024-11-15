@@ -1,4 +1,4 @@
-import { AlignJustify } from "lucide-react";
+import { AlignJustify, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
@@ -7,8 +7,9 @@ export const Header = () => {
     <div className="flex justify-between py-4 lg:px-[72px] px-4">
       <div className="flex items-center gap-6 z-50">
         <Image src="/logo.png" alt="logo" width={64} height={64} />
-        <div>
+        <div className="flex items-center gap-1 cursor-pointer">
           <p className="hidden lg:block text-white">Browse Spaces</p>
+          <ChevronDown className="text-white size-[18px]" />
         </div>
       </div>
       <div className="hidden lg:flex items-center z-50">
@@ -23,7 +24,7 @@ export const Header = () => {
         </div>
       </div>
       <div className="lg:hidden flex justify-center items-center z-50">
-        <AlignJustify className="size-6" />
+        <AlignJustify className="text-white size-6" />
       </div>
     </div>
   );

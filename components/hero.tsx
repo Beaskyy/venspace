@@ -3,6 +3,7 @@
 import { slides } from "@/lib/data";
 import { useState, useEffect } from "react";
 import { Header } from "./header";
+import { Search } from "./search";
 
 export const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -12,12 +13,15 @@ export const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slideCount);
-    }, 5000); // 5 seconds per slide
+    }, 5000);
     return () => clearInterval(interval);
   }, [slideCount]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
+      <div className="md:flex hidden absolute z-50 top-[470px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+        <Search />
+      </div>
       {/* Slides */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
@@ -30,9 +34,9 @@ export const Hero = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,33,67,0.32)] via-[rgba(0,0,0,0.39)] to-[rgba(0,33,67,0.32)]"></div>
             <Header />
-            <div className="flex justify-center items-center mt-[170px]">
+            <div className="flex flex-col justify-center items-center gap-12 mt-[170px]">
               <h1 className="lg:text-[64px] text-3xl md:text-6xl max-w-[893px] text-center text-white font-bold z-10">
-              {slide.text}{" "}
+                {slide.text}{" "}
                 <span className="text-[#FDF1C3]">{slide.highlight}</span>
                 {slide.afterText ? ` ${slide.afterText}` : ""}
               </h1>
