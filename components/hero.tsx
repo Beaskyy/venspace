@@ -19,7 +19,7 @@ export const Hero = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <div className="absolute z-50 top-[470px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+      <div className="md:flex hidden absolute z-50 top-[470px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
         <Search />
       </div>
       {/* Slides */}
