@@ -3,7 +3,7 @@ import { explore } from "@/lib/data";
 export const Explore = () => {
   return (
     <div className="lg:px-[72px] lg:pt-[72px] md:p-8 p-4">
-      <h4 className="lg:text-[28px] md:text-2xl text-xs text-[#001224] font-bold">
+      <h4 className="lg:text-[28px] md:text-2xl text-xl text-[#001224] font-bold">
         Explore spaces in the most popular areas in Lagos
       </h4>
       <div className="mt-4 flex items-center gap-6 overflow-x-auto no-scrollbar">
