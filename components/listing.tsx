@@ -4,7 +4,7 @@ import React from "react";
 export const Listing = () => {
   return (
     <div className="lg:px-[72px] md:p-8 p-4">
-      <h4 className="lg:text-[28px] md:text-2xl text-xs text-[#001224] font-bold">
+      <h4 className="lg:text-[28px] md:text-2xl text-lg text-[#001224] font-bold">
         Top rated listings
       </h4>
       <p className="text-sm leading-6 text-[#434242]">

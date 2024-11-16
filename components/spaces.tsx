@@ -5,7 +5,7 @@ import React from "react";
 export const Spaces = () => {
   return (
     <div className="lg:px-[72px] md:p-8 p-4">
-      <h4 className="lg:text-[28px] md:text-2xl text-xs text-[#001224] font-bold mb-4">
+      <h4 className="lg:text-[28px] md:text-2xl text-lg text-[#001224] font-bold mb-4">
         Find spaces that suit your purpose
       </h4>
       <div className="grid lg:grid-cols-5 grid-cols-1 mt-2 gap-6">
