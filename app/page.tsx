@@ -1,5 +1,6 @@
 import { Events } from "@/components/events";
 import { Explore } from "@/components/explore";
+import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Host } from "@/components/host";
 import { Listing } from "@/components/listing";
@@ -16,6 +17,7 @@ export default function Home() {
       <Events />
       <WhyVenspace />
       <Host />
+      <Footer />
     </main>
   );
 }

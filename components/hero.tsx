@@ -18,7 +18,7 @@ export const Hero = () => {
   }, [slideCount]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-[790px] overflow-hidden">
       <div className="md:flex hidden absolute z-50 top-[470px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
         <Search />
       </div>
