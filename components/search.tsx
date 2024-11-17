@@ -61,10 +61,6 @@ export const Search = () => {
           </div>
           <div
             className="w-[200px] border-r-[1.5px] border-transparent"
-            style={{
-              borderImage:
-                "linear-gradient(180deg, rgba(217, 217, 217, 0) 17.29%, #D9D9D9 54.02%, rgba(217, 217, 217, 0) 81.57%) 1",
-            }}
           >
             <p className="text-[13px] text-[#434242CC] font-medium leading-[21px]">
               When?
