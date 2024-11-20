@@ -1,7 +1,6 @@
 import { Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 export const Footer = () => {
   return (
@@ -92,7 +91,13 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <Image src="/line.png" alt="line" width={1440} height={0} className="lg:-mt-5 mt-10" />
+      <Image
+        src="/line.png"
+        alt="line"
+        width={1440}
+        height={0}
+        className="lg:-mt-5 mt-10"
+      />
       <div className="lg:p-[72px] p-5 text-white">
         <div className="flex lg:flex-row flex-col justify-start gap-[72px]">
           <div>
@@ -109,12 +114,12 @@ export const Footer = () => {
                 </li>
                 <li>
                   <Link href="/" className="text-[#FFFFFF99] hover:text-white">
-                    Activities
+                    Location
                   </Link>
                 </li>
                 <li>
                   <Link href="/" className="text-[#FFFFFF99] hover:text-white">
-                    Activities
+                  Resources
                   </Link>
                 </li>
               </ul>
