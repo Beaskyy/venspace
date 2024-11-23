@@ -41,6 +41,7 @@ const SearchPage = () => {
                 <div
                   className="rounded-xl w-[312px]"
                   style={{ boxShadow: "0px 2px 20px 0px #0000000F" }}
+                  key={index}
                 >
                   <div
                     className="relative bg-cover bg-center w-[312px] h-[200px] rounded-t-xl"
