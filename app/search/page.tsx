@@ -4,6 +4,7 @@ import { Search } from "@/components/search";
 import { SearchHeader } from "@/components/search-header";
 import { listings } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { Map } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -28,14 +29,23 @@ const SearchPage = () => {
       </div>
       <div className="flex flex-col gap-8 lg:px-[72px] md:p-8 p-4">
         <div>first</div>
-        <div className="flex flex-col">
+        <div className="relative flex flex-col">
           <p className="text-sm text-[#333333] font-medium leading-[21px] mb-4">
             10 birthday photo shoot spaces in Yaba, Lagos
           </p>
           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
             {currentListings.map(
               (
-                { name, location, ratings, reviews, price, image, people, instant },
+                {
+                  name,
+                  location,
+                  ratings,
+                  reviews,
+                  price,
+                  image,
+                  people,
+                  instant,
+                },
                 index
               ) => (
                 <div
@@ -49,9 +59,11 @@ const SearchPage = () => {
                       backgroundImage: `url(${image})`,
                     }}
                   >
-                    {instant && <div className="absolute left-3 top-3 text-[#F44363] bg-[#FFEBEE] py-1.5 px-3 rounded-[40px] w-fit text-xs font-medium leading-4">
-                      Instant Booking Available
-                    </div>}
+                    {instant && (
+                      <div className="absolute left-3 top-3 text-[#F44363] bg-[#FFEBEE] py-1.5 px-3 rounded-[40px] w-fit text-xs font-medium leading-4">
+                        Instant Booking Available
+                      </div>
+                    )}
                   </div>
                   <div className="bg-white p-4 rounded-b-lg">
                     <div className="flex flex-col gap-2">
@@ -74,7 +86,9 @@ const SearchPage = () => {
                           width={18}
                           height={18}
                         />
-                        <p className="text-sm text-[#434242]">{people} People</p>
+                        <p className="text-sm text-[#434242]">
+                          {people} People
+                        </p>
                       </div>
                       <div className="flex items-center gap-1">
                         <Image
@@ -101,6 +115,10 @@ const SearchPage = () => {
                 </div>
               )
             )}
+          </div>
+          <div className="absolute top-[65%] left-[45%] flex gap-2 rounded-lg w-[166px] h-11 py-2.5 px-5 bg-[#FDF1C3] cursor-pointer">
+            <Map className="size-6 text-[#001224]" />
+            <p className="text-base text-[#001224] font-medium">Show Map</p>
           </div>
         </div>
         <div className="flex justify-center items-center mt-[56px]">
