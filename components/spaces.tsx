@@ -11,14 +11,11 @@ export const Spaces = () => {
         {spaces.map(({ name, spaceNumber, image }, index) => (
           <div
             key={index}
-            className="relative bg-[#E5E5E5] bg-cover bg-center w-[240px] h-[323px] rounded-lg overflow-hidden"
+            className="relative bg-[#E5E5E5] bg-cover bg-center w-[240xp] h-[323px] rounded-lg"
             style={{ backgroundImage: `url(${image})` }}
           >
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-            {/* Content */}
-            <div className="absolute bottom-4 left-4">
+            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
+            <div className="absolute top-[261px] left-4">
               <h6 className="text-base text-white font-medium leading-[27px]">
                 {name}
               </h6>

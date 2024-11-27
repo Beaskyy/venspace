@@ -16,6 +16,7 @@ export const CategoryBox = ({ place }: CategoryBoxProps) => {
     if (params) {
       currentQuery = qs.parse(params.toString());
 
+      
       const updatedQuery: any = {
         ...currentQuery,
         category: place,

@@ -1,7 +1,6 @@
 "use client";
 
 import { listings } from "@/lib/data";
-import Image from "next/image";
 import { ListingCard } from "./listing-card";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";

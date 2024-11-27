@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import { Map } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
 import { ListingCard } from "./listing-card";
 
