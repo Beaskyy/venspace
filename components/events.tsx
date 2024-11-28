@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Events = () => {
   return (
     <div className="lg:px-[72px] mt-[72px] md:p-8 p-4">
