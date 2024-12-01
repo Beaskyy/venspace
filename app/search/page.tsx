@@ -18,7 +18,11 @@ const SearchPage = () => {
       </div>
       <div className="flex flex-col gap-8 lg:px-[72px] md:p-8 p-4">
         <SearchFilter />
-        {showMap ? <ListingsMap /> : <Listings listings={listings} />}
+        {showMap ? (
+          <ListingsMap listings={listings} />
+        ) : (
+          <Listings listings={listings} />
+        )}
       </div>
       <Footer />
     </div>
