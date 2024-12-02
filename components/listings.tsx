@@ -16,8 +16,9 @@ interface Listing {
 
 interface ListingsProps {
   listings: Listing[];
+  setShowMap: (show: boolean) => void;
 }
-export const Listings = ({ listings }: ListingsProps) => {
+export const Listings = ({ listings, setShowMap }: ListingsProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
@@ -30,7 +31,7 @@ export const Listings = ({ listings }: ListingsProps) => {
     currentPage * itemsPerPage
   );
   return (
-    <>
+    <div className="flex flex-col gap-8 lg:px-[72px] md:p-8 p-4">
       <div className="relative flex flex-col">
         <p className="text-sm text-[#333333] font-medium leading-[21px] mb-4">
           10 birthday photo shoot spaces in Yaba, Lagos
@@ -46,7 +47,7 @@ export const Listings = ({ listings }: ListingsProps) => {
             </div>
           ))}
         </div>
-        <div className="absolute lg:top-[65%] lg:left-[45%] flex gap-2 rounded-lg w-[166px] h-11 py-2.5 px-5 bg-[#FDF1C3] cursor-pointer">
+        <div onClick={() => setShowMap(true)} className="absolute lg:top-[65%] lg:left-[45%] flex gap-2 rounded-lg w-[166px] h-11 py-2.5 px-5 bg-[#FDF1C3] cursor-pointer">
           <Map className="size-6 text-[#001224]" />
           <p className="text-base text-[#001224] font-medium">Show Map</p>
         </div>
@@ -92,6 +93,6 @@ export const Listings = ({ listings }: ListingsProps) => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
