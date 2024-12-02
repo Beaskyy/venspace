@@ -21,11 +21,7 @@ export const SearchHeader = () => {
           <Button>Become a Host</Button>
         </Link>
         <div className="px-3 py-2 flex items-center gap-1">
-          <div className="relative size-9 rounded-full bg-[url('/profile.png')] bg-cover bg-center">
-            <div className="absolute size-4 bg-[#F44363] rounded-full flex justify-center items-center text-white -top-2 -right-1">
-              1
-            </div>
-          </div>
+          <div className="relative size-8 rounded-full bg-[url('/profile-circle.svg')] bg-cover bg-center"></div>
           <Image src="/arrow-down.png" alt="logo" width={12} height={6.75} />
         </div>
       </div>

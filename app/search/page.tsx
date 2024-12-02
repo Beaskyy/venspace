@@ -9,7 +9,7 @@ import { listings } from "@/lib/data";
 import { useState } from "react";
 
 const SearchPage = () => {
-  const [showMap, setShowMap] = useState(true);
+  const [showMap, setShowMap] = useState(false);
   return (
     <div>
       <SearchHeader />
@@ -18,12 +18,12 @@ const SearchPage = () => {
       </div>
       <div className="flex flex-col gap-8 lg:px-[72px] md:p-8 p-4">
         <SearchFilter />
-        {showMap ? (
-          <ListingsMap listings={listings} />
-        ) : (
-          <Listings listings={listings} />
-        )}
       </div>
+        {showMap ? (
+          <ListingsMap listings={listings} setShowMap={setShowMap} />
+        ) : (
+          <Listings listings={listings} setShowMap={setShowMap} />
+        )}
       <Footer />
     </div>
   );
