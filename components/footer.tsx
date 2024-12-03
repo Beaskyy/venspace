@@ -18,8 +18,7 @@ export const Footer = () => {
             <Phone className="size-5 text-white" />
             <p className="text-base text-white font-semibold">Contact</p>
           </div>
-          <p>Phone Number: 08123457896</p>
-          <p>Email Address: @venspacework@gmail.com</p>
+          <p className="md:text-base leading-6 text-sm">Email Address: @venspacework@gmail.com</p>
         </div>
         <div
           className="flex flex-col justify-center items-center text-[#FFFFFF99] border-r"
@@ -39,9 +38,9 @@ export const Footer = () => {
             <p className="text-base text-white font-semibold">Secure Payment</p>
           </div>
           <Image
-            src="/patricia.png"
+            src="/paystack.png"
             alt="secure payment"
-            width={367}
+            width={31}
             height={30.49}
           />
         </div>
@@ -103,7 +102,7 @@ export const Footer = () => {
           <div>
             <h4 className="text-[27px] font-bold">VENSPACE</h4>
           </div>
-          <div className="grid lg:grid-cols-4 grid-cols-2 w-full gap-[80px]">
+          <div className="grid lg:grid-cols-4 grid-cols-2 w-full lg:gap-[80px] gap-20">
             <div className="space-y-6 text-base font-medium leading-6">
               <p>Explore</p>
               <ul className="space-y-4">
