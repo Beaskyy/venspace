@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
 
 export const DescribeSpace = () => {
   return (
@@ -75,7 +74,7 @@ export const DescribeSpace = () => {
               <label className="text-[#001F3F] text-sm font-medium">
                 Space Title
               </label>
-              <Textarea
+              <textarea
                 placeholder="e.g “Enter your space description"
                 className="border border-[#1A1A1A26] placeholder:text-[#43424270] text-sm mt-2 h-[220px] rounded-lg"
               />
