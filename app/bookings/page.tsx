@@ -2,6 +2,7 @@
 import { BookingImages } from "@/components/booking-images"
 import { BookingsHeader } from "@/components/bookings-header"
 import { BookingsInfo } from "@/components/bookings-info"
+import { Reviews } from "@/components/reviews"
 
 const Bookings = () => {
   return (
@@ -9,6 +10,7 @@ const Bookings = () => {
       <BookingsHeader />
       <BookingImages />
       <BookingsInfo />
+      <Reviews />
     </main>
   )
 }

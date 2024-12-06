@@ -1,9 +1,31 @@
-import { MapPin, Users } from "lucide-react";
+import { Clock, Flag, Info, MapPin, Minus, Plus, Users } from "lucide-react";
 import Image from "next/image";
-import { Button } from "./ui";
 import Link from "next/link";
+import { Input } from "./ui/input";
+import SearchDropdown from "./search-dropdown";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { Button } from "./ui/button";
 
+const items = [
+  "Birthday Photo Shoot",
+  "Birthday Party",
+  "Board Room",
+  "Art Exhibit",
+];
 export const BookingsInfo = () => {
+  const [disabled, setDisabled] = useState(true);
+  const [guests, setGuests] = useState(0);
+
+  const addGuest = () => {
+    setGuests((prev) => prev + 1);
+    setDisabled(false);
+  };
+
+  const removeGuest = () => {
+    setGuests((prev) => prev - 1);
+    if (guests === 0) setDisabled(true);
+  };
   return (
     <div className="flex flex-col gap-8 lg:px-[72px] lg:pt-0 md:p-8 p-4">
       <div className="grid md:grid-cols-2 grid-cols-1 gap-[106px]">
@@ -239,13 +261,175 @@ export const BookingsInfo = () => {
                 7 days and 24 hours before the event start time and receive a
                 50% refund (excluding Fees) of their Booking Price. Booking
                 cancellations submitted less than 24 hours before the Event
-                start time are not refundable. <span className="text-[#F44363]">Learn more</span>
+                start time are not refundable. 
+                <span className="text-[#F44363]">Learn more</span>
               </p>
-              <p className="text-xs text-[#839AB9] font-gold">All Bookings are subject to Venspace’s Grace Period policy which provides a full refund for Bookings cancelled within 24 hours from receipt of a Booking Confirmation but no later than 48 hours prior to the Event start time.</p>
+              <p className="text-xs text-[#839AB9] font-gold border-b border-[#1A1A1A14] pb-4">
+                All Bookings are subject to Venspace’s Grace Period policy which
+                provides a full refund for Bookings cancelled within 24 hours
+                from receipt of a Booking Confirmation but no later than 48
+                hours prior to the Event start time.
+              </p>
             </div>
           </div>
         </div>
-        <div className="flex">2</div>
+        <div className="flex flex-col gap-8">
+          <div
+            className="flex flex-col gap-8 p-8 h-fit rounded-lg"
+            style={{
+              boxShadow: "0 8px 22px 0 rgba(0, 0, 0, 0.08)",
+            }}
+          >
+            <div className="flex flex-col gap-2 ">
+              <div className="flex items-center gap-2">
+                <p className="bg-[#FFEBEE] py-1.5 px-3 rounded-[40px] text-xs text-[#F44363] font-medium">
+                  Instant Booking Available
+                </p>
+                <Info className="size-4" />
+              </div>
+              <div>
+                <h3 className="text-[32px] text-[#001224] font-[900]">
+                  ₦30,000/hr
+                </h3>
+                <div className="flex items-center gap-1 text-[#434242B2]">
+                  <Clock />
+                  <p className="text-sm leading-[21px] uppercase">
+                    2hr minimum
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col w-full gap-4">
+                <label className="text-sm text-[#434242] font-medium">
+                  Purpose
+                </label>
+                <SearchDropdown items={items} />
+              </div>
+              <div className="flex flex-col w-full gap-4">
+                <label className="text-sm text-[#434242] font-medium">
+                  Date
+                </label>
+                <Input
+                  type="date"
+                  className="h-12 border border-[#1A1A1A26] py-3 px-4 placeholder:text-[#43424257] text-base leading-6"
+                  placeholder="Enter your activity"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="flex justify-between gap-4">
+                  <div className="flex flex-col w-full gap-4">
+                    <label className="text-sm text-[#434242] font-medium">
+                      Start Time
+                    </label>
+                    <Input
+                      type="time"
+                      className="h-12 border border-[#1A1A1A26] py-3 px-4 placeholder:text-[#43424257] text-base leading-6"
+                      placeholder="Enter your activity"
+                    />
+                  </div>
+                  <div className="flex flex-col w-full gap-4">
+                    <label className="text-sm text-[#434242] font-medium">
+                      End Time
+                    </label>
+                    <Input
+                      type="time"
+                      className="h-12 border border-[#1A1A1A26] py-3 px-4 placeholder:text-[#43424257] text-base leading-6"
+                      placeholder="Enter your activity"
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center cursor-pointer">
+                  <Plus className="size-4 text-[#003B77]" />
+                  <p className="text-sm text-[#003B77] font-medium">
+                    Add another day
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-[#434242] font-medium">
+                  Guests
+                </label>
+                <div className="flex justify-between">
+                  <Button
+                    onClick={removeGuest}
+                    disabled={guests === 0}
+                    className="bg-[#1A1A1A0D] h-9 shadow-none py-2.5 px-[14px] rounded-[2px] w-[163px]"
+                  >
+                    <Minus className="size-4 text-[#171717]" />
+                  </Button>
+                  <div className="flex justify-center items-center border border-[#1A1A1A14] py-2.5 px-[14px] w-[130px] h-9 rounded text-base text-[#001224] font-semibold">
+                    {guests}
+                  </div>
+                  <Button
+                    onClick={addGuest}
+                    disabled={guests >= 30}
+                    className="bg-[#1A1A1A0D] h-9 shadow-none py-2.5 px-[14px] rounded-[2px] w-[163px]"
+                  >
+                    <Plus className="size-4 text-[#171717]" />
+                  </Button>
+                </div>
+                <div className="flex items-center gap-1 text-[#434242B2]">
+                  <Info className="size-4" />
+                  <p className="text-[13px]">Maximum of 30 Guests</p>
+                </div>
+              </div>
+              <Button
+                disabled={guests === 0 || guests > 30}
+                className={cn("w-fit shadow-none", disabled && "opacity-30")}
+              >
+                Send Booking Request
+              </Button>
+            </div>
+          </div>
+          <div className="flex flex-col gap-8">
+            <div className="border border-[#1A1A1A26] p-8 rounded-lg">
+              <div className="flex flex-col gap-1">
+                <h6 className="text-lg text-[#001224] font-bold mb-4">
+                  Operating Hours
+                </h6>
+                <div className="flex flex-col gap-4">
+                  <div className="flex justify-between items-center text-sm text-[#434242] font-medium">
+                    <p>Monday</p>
+                    <p>8:00 AM - 10:00 PM</p>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-[#434242] font-medium">
+                    <p>Tuesday</p>
+                    <p>8:00 AM - 10:00 PM</p>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-[#434242] font-medium">
+                    <p>Wednesday</p>
+                    <p>8:00 AM - 10:00 PM</p>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-[#434242] font-medium">
+                    <p>Thursday</p>
+                    <p>8:00 AM - 10:00 PM</p>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-[#434242] font-medium">
+                    <p>Friday</p>
+                    <p>8:00 AM - 10:00 PM</p>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-[#434242] font-medium">
+                    <p>Saturday</p>
+                    <p>8:00 AM - 10:00 PM</p>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-[#434242] font-medium">
+                    <p>Sunday</p>
+                    <p>8:00 AM - 10:00 PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center items-center">
+              <div className="flex gap-1 items-center">
+                <Image src="/flag.svg" alt="flag" width={16} height={16} />
+                <p className="text-base text-[#DF1620]">
+                  Report this listing
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
