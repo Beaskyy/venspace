@@ -2,6 +2,8 @@
 import { BookingImages } from "@/components/booking-images"
 import { BookingsHeader } from "@/components/bookings-header"
 import { BookingsInfo } from "@/components/bookings-info"
+import { Footer } from "@/components/footer"
+import { PhotoshootStudios } from "@/components/photoshoot-studios"
 import { Reviews } from "@/components/reviews"
 
 const Bookings = () => {
@@ -11,6 +13,8 @@ const Bookings = () => {
       <BookingImages />
       <BookingsInfo />
       <Reviews />
+      <PhotoshootStudios />
+      <Footer />
     </main>
   )
 }
