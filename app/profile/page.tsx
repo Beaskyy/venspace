@@ -2,9 +2,7 @@
 
 import { ProfileListings } from "@/components/profile-listings";
 import { ProfileReviews } from "@/components/profile-reviews";
-import { Reviews } from "@/components/reviews";
 import { SearchHeader } from "@/components/search-header";
-import { Button } from "@/components/ui";
 import { CalendarDays } from "lucide-react";
 import Image from "next/image";
 
@@ -21,6 +19,7 @@ import { toast } from "sonner";
 import { useRef } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
 
 const Profile = () => {
   const inputRef = useRef<HTMLInputElement>(null);

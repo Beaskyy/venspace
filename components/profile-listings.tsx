@@ -1,7 +1,7 @@
 import { profileListings } from "@/lib/data";
 import { useState } from "react";
-import { Button } from "./ui";
 import Image from "next/image";
+import { Button } from "./ui/button";
 export const ProfileListings = () => {
   const [reviewsPerPage, setReviewsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
@@ -9,17 +9,17 @@ export const ProfileListings = () => {
 
   const totalPages = Math.ceil(profileListings.length / reviewsPerPage);
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  // const handlePrevPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage(currentPage - 1);
+  //   }
+  // };
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+  // const handleNextPage = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
   const handleShowAll = () => {
     setReviewsPerPage(profileListings.length);
     setCurrentPage(1);

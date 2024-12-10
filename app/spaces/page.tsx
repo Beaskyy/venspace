@@ -4,6 +4,7 @@ import { ContentSpace } from "@/components/content-space";
 import { DescribeSpace } from "@/components/describe-space";
 import { SpaceAddress } from "@/components/space-address";
 import { Button } from "@/components/ui/button";
+import UploadPicture from "@/components/upload-picture";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -91,6 +92,8 @@ const Spaces = () => {
           <DescribeSpace />
         ) : currentPage === 3 ? (
           <SpaceAddress />
+        ) : currentPage === 4 ? (
+          <UploadPicture />
         ) : (
           <p className="flex justify-center items-center text-2xl font-medium">
             This is the content for page {currentPage}. You can add dynamic

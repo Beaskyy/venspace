@@ -2,7 +2,6 @@ import { AlignJustify, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Input } from "./ui/input";
 
 export const BookingsHeader = () => {
   return (

@@ -1,11 +1,10 @@
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "./ui/button";
 
 export const Reviews = () => {
-  const [disabled, setDisabled] = useState(false);
   const [reviewsPerPage, setReviewsPerPage] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
   const [showLess, setShowLess] = useState(false);
