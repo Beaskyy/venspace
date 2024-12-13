@@ -2,10 +2,8 @@
 
 import { ProfileListings } from "@/components/profile-listings";
 import { ProfileReviews } from "@/components/profile-reviews";
-import { Reviews } from "@/components/reviews";
 import { SearchHeader } from "@/components/search-header";
-import { Button } from "@/components/ui";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, Check } from "lucide-react";
 import Image from "next/image";
 
 import {
@@ -18,12 +16,26 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
 
 const Profile = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [showDialog, setShowDialog] = useState(false);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const text =
+    "Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad...";
+
+  const fullText =
+    "Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.";
 
   const copyToClipboard = () => {
     if (inputRef.current) {
@@ -50,12 +62,47 @@ const Profile = () => {
               className="absolute rounded-full"
             />
           </div>
-          <div className="flex md:flex-row flex-col justify-between md:items-center w-full gap-6">
+          <div
+            onMouseEnter={() => setShowDialog(true)}
+            onMouseLeave={() => setShowDialog(false)}
+            className="flex md:flex-row flex-col justify-between md:items-center w-full gap-6"
+          >
             <div className="flex flex-col gap-[2px]">
-              <div className="flex items-center gap-1">
+              <div className="relative flex items-center gap-1">
                 <h2 className="md:text-[28px] text-2xl text-[#001224] font-bold">
                   Twelve Verse
                 </h2>
+                {showDialog && (
+                  <div
+                    className="absolute bg-white top-9 left-9 flex flex-col gap-3 w-[176px] p-4 rounded-lg"
+                    style={{ boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.06)" }}
+                  >
+                    <p className="text-base text-[#001224] font-semibold">
+                      Twelve’s confirmed information
+                    </p>
+                    <hr />
+                    <div className="flex flex-col gap-3">
+                      <div className="flex gap-1 items-center">
+                        <Check className="size-5 text-[#51BE27]" />
+                        <p className="text-base text-black leading-6">
+                          Email address
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        <Check className="size-5 text-[#51BE27]" />
+                        <p className="text-base text-black leading-6">
+                          Phone number
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        <Check className="size-5 text-[#51BE27]" />
+                        <p className="text-base text-black leading-6">
+                          Identity
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <Image src="/verify.svg" alt="verify" width={20} height={20} />
               </div>
               <div className="flex items-center gap-4">
@@ -76,7 +123,7 @@ const Profile = () => {
             <div className="flex gap-3">
               <Dialog>
                 <DialogTrigger>
-                  <div className="border border-[#1A1A1A26] shadow-none rounded-lg h-11 py-2.5 px-5 text-[#001224] text-base font-medium">
+                  <div className="border border-[#1A1A1A26] shadow-none rounded-lg h-11 py-2.5 px-5 text-[#001224] md:text-base text-sm font-medium whitespace-nowrap">
                     Message Host
                   </div>
                 </DialogTrigger>
@@ -84,6 +131,40 @@ const Profile = () => {
                   <DialogHeader>
                     <DialogTitle className="text-lg text-[#001224] font-semibold mb-6">
                       Share Profile
+                    </DialogTitle>
+
+                    <DialogDescription className="flex items-center flex-col gap-5">
+                      <p className="text-lg text-center text-[#434242] font-normal">
+                        Pick a listing from this page and then click the
+                        ‘Message Host’ button from the listing.
+                      </p>
+
+                      <Button className="w-fit">
+                        <Link href="/hosting">Go to Host’s Listings</Link>
+                      </Button>
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+
+              <Dialog>
+                <DialogTrigger>
+                  <div className="flex items-center h-11 py-2.5 px-5 bg-[#FDF1C3] rounded-lg text-[#001224] font-medium whitespace-nowrap">
+                    <span className="md:text-base text-sm">Share Profile</span>
+                    <Image
+                      src="/send-2.svg"
+                      alt="send"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-[500px] p-10 rounded-lg flex flex-col gap-6">
+                  <DialogHeader>
+                    <DialogTitle className="flex justify-center items-center">
+                      <h2 className="text-[22px] text-[#001224] font-semibold mb-3 max-w-[279px] text-center leading-[29.11px]">
+                        Select a listing to message Twelve
+                      </h2>
                     </DialogTitle>
                     <DialogDescription className="flex flex-col gap-5">
                       <div className="flex flex-col gap-1.5">
@@ -103,39 +184,6 @@ const Profile = () => {
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
-
-              <Dialog>
-                <DialogTrigger>
-                  <div className="flex items-center h-11 py-2.5 px-5 bg-[#FDF1C3] rounded-lg text-[#001224] font-medium">
-                    <span>Share Profile</span>
-                    <Image
-                      src="/send-2.svg"
-                      alt="send"
-                      width={24}
-                      height={24}
-                    />
-                  </div>
-                </DialogTrigger>
-                <DialogContent className="max-w-[500px] p-10 rounded-lg flex flex-col gap-6">
-                  <DialogHeader>
-                    <DialogTitle className="flex justify-center items-center">
-                      <h2 className="text-[22px] text-[#001224] font-semibold mb-3 max-w-[279px] text-center leading-[29.11px]">
-                        Select a listing to message Twelve
-                      </h2>
-                    </DialogTitle>
-                    <DialogDescription className="flex items-center flex-col gap-5">
-                      <p className="text-lg text-center text-[#434242] font-normal">
-                        Pick a listing from this page and then click the
-                        ‘Message Host’ button from the listing.
-                      </p>
-
-                      <Button className="w-fit">
-                        <Link href="/hosting">Go to Host’s Listings</Link>
-                      </Button>
-                    </DialogDescription>
-                  </DialogHeader>
-                </DialogContent>
-              </Dialog>
             </div>
           </div>
         </div>
@@ -146,12 +194,13 @@ const Profile = () => {
                 About Twelve
               </h2>
               <p className="md:text-[18px] text-[15px] text-[#434242]">
-                Morem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus. Class aptent taciti sociosqu ad...{" "}
-                <span className="font-medium">Read More</span>
+                {isExpanded ? fullText : `${text.substring(0, 200)}...`}{" "}
+                <span
+                  className="font-medium cursor-pointer"
+                  onClick={handleToggle}
+                >
+                  {isExpanded ? "Read Less" : "Read More"}
+                </span>
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -159,15 +208,21 @@ const Profile = () => {
                 className="p-4 rounded-lg w-full h-[86px]"
                 style={{ boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.06)" }}
               >
-                <h2 className="text-xl text-[#001224] font-medium">12</h2>
-                <p className="text-base text-[#434242B2]">Total Listings</p>
+                <h2 className="md:text-xl text-lg text-[#001224] font-medium">
+                  12
+                </h2>
+                <p className="md:text-base text-sm text-[#434242B2]">
+                  Total Listings
+                </p>
               </div>
               <div
                 className="p-4 rounded-lg w-full h-[86px]"
                 style={{ boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.06)" }}
               >
                 <div className="flex gap-[2px] items-center">
-                  <p className="text-base text-[#434242B2]">4.79</p>
+                  <p className="md:text-xl text-lg text-[#001224] font-medium">
+                    4.79
+                  </p>
                   <Image
                     src="/black-star.svg"
                     alt="star"
@@ -175,7 +230,7 @@ const Profile = () => {
                     height={18}
                   />
                 </div>
-                <p className="text-base text-[#434242B2] whitespace-nowrap">
+                <p className="md:text-base text-sm text-[#434242B2] whitespace-nowrap">
                   Average Rating
                 </p>
               </div>

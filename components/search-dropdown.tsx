@@ -10,7 +10,7 @@ interface SearchDropdownProps {
 const SearchDropdown: React.FC<SearchDropdownProps> = ({ items }) => {
   const [query, setQuery] = useState(""); // Holds the current input value
   const [isOpen, setIsOpen] = useState(false); // Manages dropdown visibility
-  const [selectedItem, setSelectedItem] = useState<string | null>(null); // Tracks the selected item
+  const [_selectedItem, setSelectedItem] = useState<string | null>(null); // Tracks the selected item
 
   // Filter items based on the query
   const filteredItems = items.filter((item) =>

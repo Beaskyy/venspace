@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ListingCard } from "./listing-card";
 
 export const PhotoshootStudios = () => {
-  const [reviewsPerPage, setReviewsPerPage] = useState(4);
+  const reviewsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(listings.length / reviewsPerPage);

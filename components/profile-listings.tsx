@@ -1,25 +1,11 @@
 import { profileListings } from "@/lib/data";
 import { useState } from "react";
-import { Button } from "./ui";
+import { Button } from "./ui/button";
 import Image from "next/image";
 export const ProfileListings = () => {
   const [reviewsPerPage, setReviewsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
-  const [showLess, setShowLess] = useState(false);
 
-  const totalPages = Math.ceil(profileListings.length / reviewsPerPage);
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
   const handleShowAll = () => {
     setReviewsPerPage(profileListings.length);
     setCurrentPage(1);
@@ -28,7 +14,6 @@ export const ProfileListings = () => {
   const handleShowLess = () => {
     setReviewsPerPage(4);
     setCurrentPage(1);
-    setShowLess(false);
   };
 
   const currentListings = profileListings.slice(
@@ -38,10 +23,10 @@ export const ProfileListings = () => {
 
   return (
     <>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-8">
         {currentListings.map((listing, index) => (
           <div
-            className="rounded-xl lg:w-[312px]"
+            className="rounded-xl"
             style={{ boxShadow: "0px 2px 20px 0px #0000000F" }}
             key={index}
           >

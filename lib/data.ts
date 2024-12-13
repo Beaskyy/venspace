@@ -399,3 +399,105 @@ export const listings = [
     instant: true,
   },
 ];
+
+export const profileListings = [
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+  {
+    image: "/listing-2.jpeg",
+    name: "All Exclusive Shanty studios",
+    description:
+      "Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+    location: "Ikeja, Lagos",
+    ratings: "5.0",
+    reviews: 10,
+    price: "30,000",
+    people: 10,
+  },
+];

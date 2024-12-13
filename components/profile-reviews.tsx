@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { Button } from "./ui";
+import { Button } from "./ui/button";
 
 export const ProfileReviews = () => {
   const [reviewsPerPage, setReviewsPerPage] = useState(2);
