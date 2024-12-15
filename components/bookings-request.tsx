@@ -22,9 +22,10 @@ import { Calendar } from "./ui/calendar";
 import { Button } from "./ui/button";
 import { Addons } from "./add-ons";
 import Image from "next/image";
+import { Payment } from "./payment";
 
 export const BookingsRequest = () => {
-  const [currentPage, setCurrentPage] = useState(2);
+  const [currentPage, setCurrentPage] = useState(3);
   const [disabled, setDisabled] = useState(false);
   const [guests, setGuests] = useState(0);
   const [date, setDate] = useState<Date | undefined>();
@@ -109,8 +110,7 @@ export const BookingsRequest = () => {
             </span>
           </div>
         </div>
-        <div className="flex md:flex-row flex-col gap-8 justify-between">
-          {/* <BookingDeets
+        {/* <BookingDeets
             date={date}
             setDate={setDate}
             guests={guests}
@@ -118,7 +118,8 @@ export const BookingsRequest = () => {
             disabled={disabled}
             setDisabled={setDisabled}
           /> */}
-          {currentPage === 1 ? (
+        {currentPage === 1 ? (
+          <div className="flex md:flex-row flex-col gap-8 justify-between">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col w-full">
                 <label className="text-sm text-[#434242] font-medium">
@@ -207,99 +208,111 @@ export const BookingsRequest = () => {
                 Next
               </Button>
             </div>
-          ) : currentPage === 2 ? (
-            <Addons />
-          ) : (
-            "beasky"
-          )}
-          <div
-            className="flex flex-col gap-6 bg-white w-full max-w-[550px] rounded-lg lg:p-8 p-5 lg:-mt-20"
-            style={{ boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.06)" }}
-          >
-            <div className="flex flex-col gap-2">
-              <div className="relative w-[209px] h-[120px]">
-                <Image
-                  src="/listing-2.jpeg"
-                  alt="img"
-                  fill
-                  className="absolute object-cover"
-                />
-              </div>
-              <h3 className="text-base text-[#001224] font-bold leading-[21.17px]">
-                All Exclusive Shanty Studios
-              </h3>
-              <div className="flex items-center gap-1">
-                <Image
-                  src="/location.svg"
-                  alt="location"
-                  width={18}
-                  height={18}
-                />
-                <p className="text-sm text-[#434242]">Abule Oja, Yaba, Lagos</p>
-              </div>
-              <div className="flex items-center gap-4">
+            <div
+              className="flex flex-col gap-6 bg-white w-full max-w-[550px] rounded-lg lg:p-8 p-5 lg:-mt-20"
+              style={{ boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.06)" }}
+            >
+              <div className="flex flex-col gap-2">
+                <div className="relative w-[209px] h-[120px]">
+                  <Image
+                    src="/listing-2.jpeg"
+                    alt="img"
+                    fill
+                    className="absolute object-cover"
+                  />
+                </div>
+                <h3 className="text-base text-[#001224] font-bold leading-[21.17px]">
+                  All Exclusive Shanty Studios
+                </h3>
                 <div className="flex items-center gap-1">
                   <Image
-                    src="/profile-2user.svg"
-                    alt="users"
+                    src="/location.svg"
+                    alt="location"
                     width={18}
                     height={18}
                   />
-                  <p className="text-sm text-[#434242]">10 People</p>
+                  <p className="text-sm text-[#434242]">
+                    Abule Oja, Yaba, Lagos
+                  </p>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Image src="/star.svg" alt="star" width={18} height={18} />
-                  <p className="text-sm text-[#434242]">5.0 (10 reviews)</p>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="flex flex-col gap-1">
-              <h3 className="text-base text-[#001224] font-bold leading-[21.17px]">
-                Purpose of Booking
-              </h3>
-              <p className="text-sm text-[#434242]">Birthday Photoshoot</p>
-            </div>
-            <hr />
-            <div className="flex flex-col gap-1">
-              <h3 className="text-base text-[#001224] font-bold leading-[21.17px]">
-                Date & Time
-              </h3>
-              <p className="text-sm text-[#434242]">Tue, Sep 13, 2024</p>
-              <p className="text-sm text-[#434242]">10:00 AM - 2:00 PM</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <h3 className="text-base text-[#001224] font-bold leading-[21.17px]">
-                Rental
-              </h3>
-              <div className="flex flex-col gap-1.5">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm text-[#434242] leading-6">₦30,000</p>
-                    <p className="text-sm text-[#434242] leading-6">x</p>
-                    <p className="text-sm text-[#434242] leading-6">4 hours</p>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-1">
+                    <Image
+                      src="/profile-2user.svg"
+                      alt="users"
+                      width={18}
+                      height={18}
+                    />
+                    <p className="text-sm text-[#434242]">10 People</p>
                   </div>
-                  <p className="text-sm text-[#434242] leading-6">₦120,000</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm text-[#434242] leading-6">₦30,000</p>
-                    <p className="text-sm text-[#434242] leading-6">x</p>
-                    <p className="text-sm text-[#434242] leading-6">4 hours</p>
+                  <div className="flex items-center gap-1">
+                    <Image src="/star.svg" alt="star" width={18} height={18} />
+                    <p className="text-sm text-[#434242]">5.0 (10 reviews)</p>
                   </div>
-                  <p className="text-sm text-[#434242] leading-6">₦120,000</p>
                 </div>
               </div>
-            </div>
-            <hr />
-            <div className="flex justify-between items-center">
-              <p className="text-lg text-[#001224] font-black">Total</p>
-              <p className="text-lg text-[#001224] font-black">₦123,000</p>
+              <hr />
+              <div className="flex flex-col gap-1">
+                <h3 className="text-base text-[#001224] font-bold leading-[21.17px]">
+                  Purpose of Booking
+                </h3>
+                <p className="text-sm text-[#434242]">Birthday Photoshoot</p>
+              </div>
+              <hr />
+              <div className="flex flex-col gap-1">
+                <h3 className="text-base text-[#001224] font-bold leading-[21.17px]">
+                  Date & Time
+                </h3>
+                <p className="text-sm text-[#434242]">Tue, Sep 13, 2024</p>
+                <p className="text-sm text-[#434242]">10:00 AM - 2:00 PM</p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <h3 className="text-base text-[#001224] font-bold leading-[21.17px]">
+                  Rental
+                </h3>
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm text-[#434242] leading-6">
+                        ₦30,000
+                      </p>
+                      <p className="text-sm text-[#434242] leading-6">x</p>
+                      <p className="text-sm text-[#434242] leading-6">
+                        4 hours
+                      </p>
+                    </div>
+                    <p className="text-sm text-[#434242] leading-6">₦120,000</p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm text-[#434242] leading-6">
+                        ₦30,000
+                      </p>
+                      <p className="text-sm text-[#434242] leading-6">x</p>
+                      <p className="text-sm text-[#434242] leading-6">
+                        4 hours
+                      </p>
+                    </div>
+                    <p className="text-sm text-[#434242] leading-6">₦120,000</p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div className="flex justify-between items-center">
+                <p className="text-lg text-[#001224] font-black">Total</p>
+                <p className="text-lg text-[#001224] font-black">₦123,000</p>
+              </div>
             </div>
           </div>
-        </div>
+        ) : currentPage === 2 ? (
+          <Addons />
+        ) : currentPage === 3 ? (
+          <Payment />
+        ) : (
+          "Beasky"
+        )}
       </div>
     </div>
   );
