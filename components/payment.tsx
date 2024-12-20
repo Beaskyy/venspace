@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { Icons } from "./icons";
 import { Info } from "lucide-react";
 import { Input } from "./ui/input";
 
@@ -9,7 +8,7 @@ export const Payment = () => {
     <div className="flex md:flex-row flex-col gap-8 justify-between">
       <div className="flex flex-col gap-6 w-full max-w-[638px]">
         <div className="flex items-center gap-1.5 bg-[#F8F9FA] h-12 p-1.5 rounded-md">
-          <Icons.infoCircle className="size-5" />
+          {/* <Icons.infoCircle className="size-5" /> */}
           <p className="lg:text-base md:text-sm text-xs text-[#001224] leading-6 font-medium">
             Have a gift card? Click here to enter the code
           </p>
