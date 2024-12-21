@@ -1,14 +1,17 @@
 import Image from "next/image";
 import React from "react";
+import { Icons } from "./icons";
 import { Info } from "lucide-react";
 import { Input } from "./ui/input";
+import { Button } from "./ui";
+import { Checkbox } from "./ui/checkbox";
 
 export const Payment = () => {
   return (
     <div className="flex md:flex-row flex-col gap-8 justify-between">
       <div className="flex flex-col gap-6 w-full max-w-[638px]">
         <div className="flex items-center gap-1.5 bg-[#F8F9FA] h-12 p-1.5 rounded-md">
-          {/* <Icons.infoCircle className="size-5" /> */}
+          <Icons.infoCircle className="size-5" />
           <p className="lg:text-base md:text-sm text-xs text-[#001224] leading-6 font-medium">
             Have a gift card? Click here to enter the code
           </p>
@@ -108,11 +111,12 @@ export const Payment = () => {
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <Input type="checkbox" className="w-[16px] h-[16px]" />
+              <Checkbox className="w-[16px] h-[16px]" />
               <label className="text-sm text-[#434242] leading-[21px]">
                 I agree to the Venspace Terms of Service
               </label>
             </div>
+            <Button className="w-fit">Send Booking Request</Button>
           </div>
         </div>
       </div>
