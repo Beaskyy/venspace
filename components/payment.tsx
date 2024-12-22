@@ -3,7 +3,7 @@ import React from "react";
 import { Icons } from "./icons";
 import { Info } from "lucide-react";
 import { Input } from "./ui/input";
-import { Button } from "./ui";
+import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 
 export const Payment = () => {
