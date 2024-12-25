@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const links = [
   { label: "Messages", href: "/" },
@@ -24,7 +25,7 @@ const links = [
 
 export const Header = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [activeItem, setActiveItem] = useState<string | null>(null);
 
   const submenuItems: Record<string, string[]> = {
     Locations: [
@@ -58,6 +59,7 @@ export const Header = () => {
       "Graphic Walls",
     ],
   };
+
   return (
     <div className="flex justify-between py-4 lg:px-[72px] px-4">
       <div className="flex items-center md:gap-6 gap-3 z-50">
@@ -66,53 +68,56 @@ export const Header = () => {
         </div>
 
         <div className="relative">
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <div className="flex items-center gap-1 cursor-pointer">
-                <p className="hidden lg:block text-white">Browse Spaces</p>
-                <ChevronDown className="text-white size-[18px]" />
-              </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="py-4 w-[165px]">
-              {Object.keys(submenuItems).map((item) => (
-                <DropdownMenuItem
-                  key={item}
-                  className="flex items-center h-9"
-                  onMouseEnter={() => setHoveredItem(item)}
-                  onMouseLeave={() => setHoveredItem(null)}
-                >
-                  <p className="text-[#001224] text-base font-medium leading-6 hover:bg-[#F4F5F6] w-full py-1.5 px-4">
-                    {item}
-                  </p>
-                  <ChevronRight className="size-4" />
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
+          {/* Main Trigger */}
+          <div className="flex items-center gap-1 cursor-pointer">
+            <p className="hidden lg:block text-white">Browse Spaces</p>
+            <ChevronDown className="text-white size-[18px]" />
+          </div>
 
-            {/* Submenu */}
-            {hoveredItem && (
-              <div
-                className="absolute top-[29px] -right-[185px] bg-white w-[165px] rounded-tr-xl rounded-br-xl py-4"
-                style={{ boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.06)" }}
-              >
-                <div className="flex flex-col gap-y-1.5">
-                  {submenuItems[hoveredItem].map((submenuItem, index) => (
-                    <Link
-                      key={index}
-                      href="/"
-                      className={`py-1.5 px-4 text-base leading-6 font-medium ${
-                        submenuItem === "See All"
-                          ? "text-[#F44363]"
-                          : "text-[#001224]"
-                      } hover:bg-[#F4F5F6]`}
-                    >
-                      {submenuItem}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+          {/* Main Menu */}
+          <div
+            className={cn(
+              "absolute top-full left-0 bg-white w-[165px] shadow-lg py-2",
+              activeItem !== null ? "rounded-tl-xl rounded-bl-xl" : "rounded-xl"
             )}
-          </DropdownMenu>
+          >
+            {Object.keys(submenuItems).map((item) => (
+              <div
+                key={item}
+                className="relative group"
+                onMouseEnter={() => setActiveItem(item)}
+                onMouseLeave={() => setActiveItem(null)}
+              >
+                {/* Main Menu Item */}
+                <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  <p className="text-[#001224] text-base font-medium">{item}</p>
+                  <ChevronRight className="size-4 text-[#001224]" />
+                </div>
+
+                {/* Submenu */}
+                {activeItem === item && (
+                  <div
+                    className="absolute -top-2 ml-[1px] left-full bg-white min-w-[165px] rounded-tr-xl rounded-br-xl shadow-lg py-2"
+                    style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)" }}
+                  >
+                    {submenuItems[item].map((submenuItem, index) => (
+                      <Link
+                        key={index}
+                        href="/"
+                        className={`block px-4 py-2 text-base font-medium whitespace-nowrap ${
+                          submenuItem === "See All"
+                            ? "text-[#F44363]"
+                            : "text-[#001224]"
+                        } hover:bg-gray-100`}
+                      >
+                        {submenuItem}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="hidden lg:flex items-center z-50">
