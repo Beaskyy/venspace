@@ -25,6 +25,7 @@ const links = [
 
 export const Header = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
   const submenuItems: Record<string, string[]> = {
@@ -69,55 +70,64 @@ export const Header = () => {
 
         <div className="relative">
           {/* Main Trigger */}
-          <div className="flex items-center gap-1 cursor-pointer">
+          <div
+            className="flex items-center gap-1 cursor-pointer"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
             <p className="hidden lg:block text-white">Browse Spaces</p>
             <ChevronDown className="text-white size-[18px]" />
           </div>
 
           {/* Main Menu */}
-          <div
-            className={cn(
-              "absolute top-full left-0 bg-white w-[165px] shadow-lg py-2",
-              activeItem !== null ? "rounded-tl-xl rounded-bl-xl" : "rounded-xl"
-            )}
-          >
-            {Object.keys(submenuItems).map((item) => (
-              <div
-                key={item}
-                className="relative group"
-                onMouseEnter={() => setActiveItem(item)}
-                onMouseLeave={() => setActiveItem(null)}
-              >
-                {/* Main Menu Item */}
-                <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  <p className="text-[#001224] text-base font-medium">{item}</p>
-                  <ChevronRight className="size-4 text-[#001224]" />
-                </div>
-
-                {/* Submenu */}
-                {activeItem === item && (
-                  <div
-                    className="absolute -top-2 ml-[1px] left-full bg-white min-w-[165px] rounded-tr-xl rounded-br-xl shadow-lg py-2"
-                    style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)" }}
-                  >
-                    {submenuItems[item].map((submenuItem, index) => (
-                      <Link
-                        key={index}
-                        href="/"
-                        className={`block px-4 py-2 text-base font-medium whitespace-nowrap ${
-                          submenuItem === "See All"
-                            ? "text-[#F44363]"
-                            : "text-[#001224]"
-                        } hover:bg-gray-100`}
-                      >
-                        {submenuItem}
-                      </Link>
-                    ))}
+          {isMenuOpen && (
+            <div
+              className={cn(
+                "absolute top-full left-0 bg-white w-[165px] shadow-lg py-2",
+                activeItem !== null
+                  ? "rounded-tl-xl rounded-bl-xl"
+                  : "rounded-xl"
+              )}
+            >
+              {Object.keys(submenuItems).map((item) => (
+                <div
+                  key={item}
+                  className="relative group"
+                  onMouseEnter={() => setActiveItem(item)}
+                  onMouseLeave={() => setActiveItem(null)}
+                >
+                  {/* Main Menu Item */}
+                  <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    <p className="text-[#001224] text-base font-medium">
+                      {item}
+                    </p>
+                    <ChevronRight className="size-4 text-[#001224]" />
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
+
+                  {/* Submenu */}
+                  {activeItem === item && (
+                    <div
+                      className="absolute -top-2 ml-[1px] left-full bg-white min-w-[165px] rounded-tr-xl rounded-br-xl shadow-lg py-2"
+                      style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)" }}
+                    >
+                      {submenuItems[item].map((submenuItem, index) => (
+                        <Link
+                          key={index}
+                          href="/"
+                          className={`block px-4 py-2 text-base font-medium whitespace-nowrap ${
+                            submenuItem === "See All"
+                              ? "text-[#F44363]"
+                              : "text-[#001224]"
+                          } hover:bg-gray-100`}
+                        >
+                          {submenuItem}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div className="hidden lg:flex items-center z-50">
