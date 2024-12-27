@@ -84,6 +84,82 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  /* Ensure higher specificity for buttons */
+.custom-swiper .swiper-button-next,
+.custom-swiper .swiper-button-prev {
+  -webkit-box-pack: center !important;
+  -webkit-box-align: center !important;
+  appearance: none !important;
+  display: inline-flex !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  outline: none !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  color: rgba(34, 34, 34, 0) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-clip: padding-box !important;
+  box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px !important;
+  transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
+  width: 23.33px !important;
+  height: 23.33px !important;
+  /* transform: scale(0.5); */
+  font-weight: 900;
+}
+
+.custom-swiper .swiper-button-prev {
+  background-image: url("https://cdn.icon-icons.com/icons2/1369/PNG/512/-navigate-before_90417.png") !important;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.custom-swiper .swiper-button-next {
+  background-image: url("https://cdn.icon-icons.com/icons2/1369/PNG/512/-navigate-next_90472.png") !important;
+  background-position: center center;
+  background-size: contain;
+}
+
+.custom-swiper .swiper-button-next:hover,
+.custom-swiper .swiper-button-prev:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.custom-swiper .swiper-pagination-bullet {
+  background-color: white;
+  opacity: 0.7;
+  width: 8px;
+  height: 8px;
+  margin: 0 5px;
+}
+
+.custom-swiper .swiper-pagination-bullet-active {
+  background-color: white;
+  opacity: 1;
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+  width: 8px;
+  height: 8px;
+}
+
+/* Hide navigation buttons and pagination by default */
+.relative .swiper-button-next,
+.relative .swiper-button-prev,
+.relative .swiper-pagination {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Smooth fade-in effect */
+}
+
+/* Show navigation buttons and pagination on hover */
+.relative:hover .swiper-button-next,
+.relative:hover .swiper-button-prev,
+.relative:hover .swiper-pagination {
+  opacity: 1;
+}
 }
 
 @layer utilities {
