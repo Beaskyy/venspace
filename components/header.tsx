@@ -1,213 +1,168 @@
-import { AlignJustify, ChevronDown, ChevronRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
 import { Button } from "./ui/button";
-import Image from "next/image";
-import Link from "next/link";
-import { Navigator } from "./navigator";
+import { SearchIcon } from "lucide-react";
+import { Input } from "./ui/input";
+import { format, isBefore, startOfDay } from "date-fns";
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
-const links = [
-  { label: "Messages", href: "/" },
-  { label: "Notifications", href: "/" },
-  { label: "Bookings", href: "/" },
-  { label: "Wishlist", href: "/" },
-  { label: "VenCredit", href: "/" },
-  { label: "Gift Cards", href: "/" },
-];
+export const Search = () => {
+  const [recentSearches, setRecentSearches] = useState("");
+  const [recentPlaces, setRecentPlaces] = useState("");
+  const [showRecentSearches, setShowRecentSearches] = useState(false);
+  const [showRecentPlaces, setShowRecentPlaces] = useState(false);
+  const [date, setDate] = useState<Date | undefined>(undefined);
 
-export const Header = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState<string | null>(null);
-
-  const submenuItems: Record<string, string[]> = {
-    Locations: [
-      "Yaba",
-      "Lekki",
-      "Ebute Metta",
-      "Ikorodu",
-      "Ikoyi",
-      "Victoria Island",
-    ],
-    Activities: [
-      "Photoshoot",
-      "Videoshoot",
-      "Party",
-      "Dinner",
-      "Large Gathering",
-      "Training",
-      "See All",
-    ],
-    "Space Types": [
-      "Content House",
-      "Photo Studio",
-      "Podcast Room",
-      "Party Room",
-    ],
-    Amenities: [
-      "Free WiFi",
-      "Lightening",
-      "Abstract Props",
-      "Wheelchair Accessible",
-      "Graphic Walls",
-    ],
+  const isDisabled = (date: Date) => {
+    const today = startOfDay(new Date()); // Get today's date at 00:00
+    return isBefore(date, today); // Disable dates before today
   };
 
   return (
-    <div className="flex justify-between py-4 lg:px-[72px] px-4">
-      <div className="flex items-center md:gap-6 gap-3 z-50">
-        <div className="relative md:w-16 md:h-16 w-[43px] h-[43px]">
-          <Image src="/logo.png" alt="logo" fill className="absolute" />
-        </div>
-
-        <div className="relative">
-          {/* Main Trigger */}
+    <div className="z-10">
+      <div
+        className="h-[68px] bg-white py-2 pl-8 pr-2 lg:w-[990px] flex justify-between items-center rounded-[64px]"
+        style={{ boxShadow: "0px 2px 19px 0px #0000000D" }}
+      >
+        <div className="grid grid-cols-3 gap-10 w-full">
           <div
-            className="flex items-center gap-1 cursor-pointer"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="relative border-r-[1.5px] border-transparent mt-3"
+            style={{
+              borderImage:
+                "linear-gradient(180deg, rgba(217, 217, 217, 0) 17.29%, #D9D9D9 54.02%, rgba(217, 217, 217, 0) 81.57%) 1",
+            }}
           >
-            <p className="hidden lg:block text-white">Browse Spaces</p>
-            <ChevronDown className="text-white size-[18px]" />
-          </div>
-
-          {/* Main Menu */}
-          {isMenuOpen && (
-            <div
-              className={cn(
-                "absolute top-full left-0 bg-white w-[165px] shadow-lg py-2",
-                activeItem !== null
-                  ? "rounded-tl-xl rounded-bl-xl"
-                  : "rounded-xl"
-              )}
-            >
-              {Object.keys(submenuItems).map((item) => (
-                <div
-                  key={item}
-                  className="relative group"
-                  onMouseEnter={() => setActiveItem(item)}
-                  onMouseLeave={() => setActiveItem(null)}
-                >
-                  {/* Main Menu Item */}
-                  <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    <p className="text-[#001224] text-base font-medium">
-                      {item}
-                    </p>
-                    <ChevronRight className="size-4 text-[#001224]" />
-                  </div>
-
-                  {/* Submenu */}
-                  {activeItem === item && (
-                    <div
-                      className="absolute -top-2 ml-[1px] left-full bg-white min-w-[165px] rounded-tr-xl rounded-br-xl shadow-lg py-2"
-                      style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)" }}
-                    >
-                      {submenuItems[item].map((submenuItem, index) => (
-                        <Link
-                          key={index}
-                          href="/"
-                          className={`block px-4 py-2 text-base font-medium whitespace-nowrap ${
-                            submenuItem === "See All"
-                              ? "text-[#F44363]"
-                              : "text-[#001224]"
-                          } hover:bg-gray-100`}
-                        >
-                          {submenuItem}
-                        </Link>
-                      ))}
-                    </div>
+            <p className="text-[13px] text-[#434242CC] font-medium leading-[21px]">
+              What are you planning?
+            </p>
+            <Input
+              type="text"
+              placeholder="Enter your activity"
+              value={recentSearches}
+              onChange={(e) => setRecentSearches(e.target.value)}
+              onKeyUp={() => setShowRecentSearches(true)}
+              className="border-transparent shadow-none text-base font-medium p-0 placeholder:text-[#434242B2]"
+            />
+            {showRecentSearches && (
+              <div
+                className="absolute bg-white w-full h-[181px] rounded-[19px] mt-1 py-4"
+                style={{ boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.06)" }}
+              >
+                <p className="text-[#C2C2C2] uppercase text-[10px] font-bold tracking-[10%] mb-2 px-4">
+                  Recent Searches
+                </p>
+                <div className="flex flex-col gap-1">
+                  {["Photo shoot", "Wedding reception", "Graduation party"].map(
+                    (search) => (
+                      <p
+                        key={search}
+                        className="py-2 px-4 hover:bg-[#F4F5F6] text-base text-[#001224] font-medium leading-6 cursor-pointer"
+                        onClick={() => {
+                          setRecentSearches(search);
+                          setShowRecentSearches(false); // Close the dropdown after selection
+                        }}
+                      >
+                        {search}
+                      </p>
+                    )
                   )}
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="hidden lg:flex items-center z-50">
-        <Link href={"/auth/sign-up?mode=host"}>
-          <Button>Become a Host</Button>
-        </Link>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <div className="px-3 py-2 flex items-center gap-1">
-              <div className="relative size-9 rounded-full bg-[url('/profile.png')] bg-cover bg-center">
-                <div className="absolute size-4 bg-[#F44363] rounded-full flex justify-center items-center text-white -top-2 -right-1">
-                  1
+              </div>
+            )}
+          </div>
+          <div
+            className="relative border-r-[1.5px] border-transparent mt-3"
+            style={{
+              borderImage:
+                "linear-gradient(180deg, rgba(217, 217, 217, 0) 17.29%, #D9D9D9 54.02%, rgba(217, 217, 217, 0) 81.57%) 1",
+            }}
+          >
+            <p className="text-[13px] text-[#434242CC] font-medium leading-[21px]">
+              Where?
+            </p>
+            <Input
+              type="text"
+              placeholder="Enter the area"
+              value={recentPlaces}
+              onChange={(e) => setRecentPlaces(e.target.value)}
+              onKeyUp={() => setShowRecentPlaces(true)}
+              className="border-transparent shadow-none text-base font-medium p-0 placeholder:text-[#434242B2]"
+            />
+            {showRecentPlaces && (
+              <div
+                className="absolute bg-white w-full h-[181px] rounded-[19px] mt-1 py-4"
+                style={{ boxShadow: "0 4px 20px 0 rgba(0, 0, 0, 0.06)" }}
+              >
+                <p className="text-[#C2C2C2] uppercase text-[10px] font-bold tracking-[10%] mb-2 px-4">
+                  Recent Searches
+                </p>
+                <div className="flex flex-col gap-1">
+                  {["Ikeja", "Lekki Phase 1", "Ikate"].map((place) => (
+                    <p
+                      key={place}
+                      className="py-2 px-4 hover:bg-[#F4F5F6] text-base text-[#001224] font-medium leading-6 cursor-pointer"
+                      onClick={() => {
+                        setRecentPlaces(place);
+                        setShowRecentPlaces(false); // Close the dropdown after selection
+                      }}
+                    >
+                      {place}
+                    </p>
+                  ))}
                 </div>
               </div>
-              <Image
-                src="/arrow-down.png"
-                alt="logo"
-                width={12}
-                height={6.75}
-              />
-            </div>
-          </DropdownMenuTrigger>
-          {loggedIn ? (
-            <DropdownMenuContent>
-              {links.map((link) => (
-                <DropdownMenuItem key={link.label} className="h-9">
-                  <Link
-                    href={link.href}
-                    className="text-[#001224] text-base font-medium leading-6 hover:bg-[#F4F5F6] w-full py-1.5 px-4"
-                  >
-                    {link.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="h-9">
-                <p className="text-[#001224] text-base font-medium leading-6 hover:bg-[#F4F5F6] w-full py-1.5 px-4">
-                  Profile
-                </p>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="h-9">
-                <p className="text-[#001224] text-base font-medium leading-6 hover:bg-[#F4F5F6] w-full py-1.5 px-4">
-                  Become a Host
-                </p>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="h-9">
-                <p className="text-[#001224] text-base font-medium leading-6 hover:bg-[#F4F5F6] w-full py-1.5 px-4">
-                  Log Out
-                </p>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          ) : (
-            <DropdownMenuContent>
-              <DropdownMenuItem className="h-9">
+            )}
+          </div>
+          <div className=" border-r-[1.5px] border-transparent mt-3">
+            <p className="text-[13px] text-[#434242CC] font-medium leading-[21px]">
+              When?
+            </p>
+            <Popover>
+              <PopoverTrigger asChild>
                 <p
-                  onClick={() => setLoggedIn(true)}
-                  className="text-[#001224] text-base font-medium leading-6 hover:bg-[#F4F5F6] w-full py-1.5 px-4"
+                  className={cn(
+                    "text-sm mt-2 font-medium bg-transparent shadow-none p-0 h-fit text-[#434242B2] cursor-pointer",
+                    !date && "text-muted-foreground"
+                  )}
                 >
-                  Log In
+                  {date ? (
+                    format(date, "PPP")
+                  ) : (
+                    <span className="text-sm font-medium text-[#434242B2]">
+                      Select Date
+                    </span>
+                  )}
                 </p>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="h-9">
-                <p className="text-[#001224] text-base font-medium leading-6 hover:bg-[#F4F5F6] w-full py-1.5 px-4">
-                  Sign Up
-                </p>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="h-9">
-                <p className="text-[#001224] text-base font-medium leading-6 hover:bg-[#F4F5F6] w-full py-1.5 px-4">
-                  Become a Host
-                </p>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          )}
-        </DropdownMenu>
-      </div>
-      <div className="lg:hidden flex justify-center items-center z-50">
-        <Navigator color="#ffffff" />
+              </PopoverTrigger>
+              <PopoverContent
+                className="w-auto p-0 rounded-[19px]"
+                align="start"
+              >
+                <Calendar
+                  mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  disabled={isDisabled}
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+        </div>
+        <Link href="/search">
+          <Button className="w-[136px] h-[52px] rounded-[32px] py-[14px] px-[56px] bg-[#FDF1C3] shadow-none">
+            <SearchIcon className="size-6 text-[#001224]" />
+          </Button>
+        </Link>
       </div>
     </div>
   );
