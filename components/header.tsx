@@ -16,7 +16,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-export const Search = () => {
+export const Header = () => {
   const [recentSearches, setRecentSearches] = useState("");
   const [recentPlaces, setRecentPlaces] = useState("");
   const [showRecentSearches, setShowRecentSearches] = useState(false);
