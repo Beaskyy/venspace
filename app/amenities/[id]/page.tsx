@@ -3,17 +3,17 @@
 import { Footer } from "@/components/footer";
 import { ListingCard } from "@/components/listing-card";
 import { SearchHeader } from "@/components/search-header";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui";
 import { Input } from "@/components/ui/input";
 import { listings } from "@/lib/data";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-const LocationId = ({ params }: { params: { id: string } }) => {
+const AmentitiesId = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const [activity, setActivity] = useState("");
-  const [location, setLocation] = useState(`${id.replace("-", " ")}`);
+  const [location, setLocation] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -29,13 +29,12 @@ const LocationId = ({ params }: { params: { id: string } }) => {
       <div className="flex md:flex-row flex-col justify-between items-center md:gap-12 gap-6 lg:pl-[72px] md:pl-8">
         <div className="flex flex-col gap-6 max-w-[542px] md:mt-0 mt-6 md:p-8 p-4">
           <div className="flex flex-col gap-2">
-            <h2 className="lg:text-[32px] md:text-3xl text-2xl text-[#001224] font-bold leading-[42.34px] max-w-[432px]">
-              Find your creative spaces in{" "}
-              <span className="capitalize">{id.replace("-", " ")}</span>, Lagos
+            <h2 className="lg:text-[32px] md:text-3xl text-2xl text-[#001224] font-bold leading-[42.34px]">
+              Find spaces that are {id.replace("-", " ")} near me
             </h2>
             <p className="md:text-base text-sm text-[#434242] md:leading-6">
-              Book thousands of unique creative spaces directly from hosts
-              within <span className="capitalize">{id.replace("-", " ")}</span>.
+              Discover thousands of spaces that are {id.replace("-", " ")} for
+              hire perfect for your activity.
             </p>
           </div>
           <div className="flex flex-col gap-4">
@@ -57,7 +56,7 @@ const LocationId = ({ params }: { params: { id: string } }) => {
               </p>
               <Input
                 type="text"
-                placeholder="Enter your activity"
+                placeholder="Enter the area"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 className="border-transparent shadow-none text-[15px] font-medium p-0 placeholder:text-[#434242B2]"
@@ -71,7 +70,7 @@ const LocationId = ({ params }: { params: { id: string } }) => {
         </div>
         <div className="relative lg:w-[720px] lg:h-[825px] md:w-[540px] md:h-[615px] w-full h-[520px]">
           <Image
-            src="/ikoyi-link-bridge.jpeg"
+            src="/event-2.jpeg"
             alt="location"
             fill
             className="absolute object-cover"
@@ -81,8 +80,7 @@ const LocationId = ({ params }: { params: { id: string } }) => {
       <div className="flex flex-col gap-8 lg:px-[72px] md:p-8 p-4 mt-16">
         <div className="relative flex flex-col gap-8">
           <h2 className="md:text-2xl text-lg text-[#001224] font-bold">
-            Popular creative spaces in{" "}
-            <span className="capitalize">{id.replace("-", " ")}</span>
+            Popular {id.replace("-", " ")}
           </h2>
           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
             {currentListings.map((listing, index) => (
@@ -102,4 +100,4 @@ const LocationId = ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default LocationId;
+export default AmentitiesId;
