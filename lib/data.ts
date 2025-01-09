@@ -77,6 +77,39 @@ export const spaces = [
   },
 ];
 
+export const submenuItems: Record<string, string[]> = {
+    Locations: [
+      "Yaba",
+      "Lekki",
+      "Ebute Metta",
+      "Ikorodu",
+      "Ikoyi",
+      "Victoria Island",
+    ],
+    Activities: [
+      "Photoshoot",
+      "Videoshoot",
+      "Party",
+      "Dinner",
+      "Large Gathering",
+      "Training",
+      "See All",
+    ],
+    "Space Types": [
+      "Content House",
+      "Photo Studio",
+      "Podcast Room",
+      "Party Room",
+    ],
+    Amenities: [
+      "Free WiFi",
+      "Lightening",
+      "Abstract Props",
+      "Wheelchair Accessible",
+      "Graphic Walls",
+    ],
+  };
+
 export const listings = [
   {
     images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
