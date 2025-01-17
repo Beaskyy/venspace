@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui";
 import { CalendarDays, Check } from "lucide-react";
 import Image from "next/image";
 
@@ -15,6 +14,7 @@ import { toast } from "sonner";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
+import { Button } from "./ui/button";
 
 export const UserProfile = () => {
   const inputRef = useRef<HTMLInputElement>(null);
