@@ -8,14 +8,15 @@ import { MembershipForm } from "@/components/membership-form";
 
 const Membership = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [selectedId, setSelectedId] = useState<number>(0);
   return (
     <div>
       <SearchHeader />
       <div className="flex flex-col gap-12 lg:px-[72px] my-10 lg:pt-0 md:p-8 p-4">
         {currentPage === 0 ? (
-          <MembershipPlan setCurrentPage={setCurrentPage} />
+          <MembershipPlan setCurrentPage={setCurrentPage} setSelectedId={setSelectedId} />
         ) : currentPage === 1 ? (
-          <MembershipForm setCurrentPage={setCurrentPage} />
+          <MembershipForm setCurrentPage={setCurrentPage} selectedId={selectedId} />
         ) : (
           "beasky"
         )}

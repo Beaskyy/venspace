@@ -3,6 +3,7 @@ import { Button } from "./ui";
 
 interface MembershipCardProps {
   plan: {
+    id: number;
     title: string;
     price: string;
     benefits: string[];
@@ -12,11 +13,13 @@ interface MembershipCardProps {
     footer: string;
   };
   setCurrentPage: (currentPage: number) => void;
+  setSelectedId: (selectedId: number) => void;
 }
 
 export const MembershipCard = ({
   plan,
   setCurrentPage,
+  setSelectedId,
 }: MembershipCardProps) => {
   return (
     <div
@@ -36,7 +39,10 @@ export const MembershipCard = ({
           </span>
         </h3>
       </div>
-      <Button className="h-11" onClick={() => setCurrentPage(1)}>
+      <Button className="h-11" onClick={() => {
+        setCurrentPage(1);
+        setSelectedId(plan.id);
+      }}>
         Subscribe
       </Button>
       <div className="flex flex-col gap-6">

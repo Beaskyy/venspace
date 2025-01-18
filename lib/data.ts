@@ -77,6 +77,53 @@ export const spaces = [
   },
 ];
 
+export const membershipPlans = [
+  {
+    id: 1,
+    title: "STANDARD",
+    price: "₦100,000",
+    bgColor: "bg-[#FDF1C3]",
+    textColor: "text-[#9C7C00]",
+    benefits: [
+      "10 hours/month of studio time",
+      "10% discount on add-ons",
+      "Free use of standard studio props",
+    ],
+    footer: "- Exclusive Shanty Studios; Twelve’s Place -",
+    footerTextColor: "text-[#0155AD]",
+  },
+  {
+    id: 2,
+    title: "PROFESSIONAL",
+    price: "₦200,000",
+    bgColor: "bg-[#001F3F]",
+    textColor: "text-white",
+    benefits: [
+      "20 hours/month of studio time",
+      "20% discount on add-ons",
+      "Free use of standard studio props",
+      "Assistance setting up",
+    ],
+    footer: "- Exclusive Shanty Studios; Twelve’s Place -",
+    footerTextColor: "text-[#0155AD]",
+  },
+  {
+    id: 3,
+    title: "ELITE",
+    price: "₦300,000",
+    bgColor: "bg-[#68303A]",
+    textColor: "text-[#FFF8F9]",
+    benefits: [
+      "40 hours/month of studio time",
+      "30% discount on add-ons",
+      "Free use of standard studio props",
+      "Assistance setting up and standby staff",
+    ],
+    footer: "- Access to all listings -",
+    footerTextColor: "text-[#001224]",
+  },
+];
+
 export const submenuItems: Record<string, string[]> = {
     Locations: [
       "Yaba",

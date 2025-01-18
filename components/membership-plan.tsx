@@ -5,9 +5,13 @@ import { UserProfile } from "./user-profile";
 
 interface MembershipPlanProps {
   setCurrentPage: (currentPage: number) => void;
+  setSelectedId: (selectedId: number) => void;
 }
 
-export const MembershipPlan = ({ setCurrentPage }: MembershipPlanProps) => {
+export const MembershipPlan = ({
+  setCurrentPage,
+  setSelectedId,
+}: MembershipPlanProps) => {
   return (
     <>
       <UserProfile />
@@ -26,11 +30,12 @@ export const MembershipPlan = ({ setCurrentPage }: MembershipPlanProps) => {
               </p>
             </div>
             <div className="grid md:grid-cols-3 grid-cols-1 gap-12">
-              {membershipPlans.map((plan, index) => (
+              {membershipPlans.map((plan) => (
                 <MembershipCard
-                  key={index}
+                  key={plan.id}
                   plan={plan}
                   setCurrentPage={setCurrentPage}
+                  setSelectedId={setSelectedId}
                 />
               ))}
             </div>
