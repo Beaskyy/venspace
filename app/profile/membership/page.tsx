@@ -6,11 +6,12 @@ import { MembershipPlan } from "@/components/membership-plan";
 import { SearchHeader } from "@/components/search-header";
 import { MembershipForm } from "@/components/membership-form";
 import { MembershipReview } from "@/components/membership-review";
+import { MembershipWelcome } from "@/components/membership-welcome";
 
 const Membership = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedId, setSelectedId] = useState<number>(0);
-  const [selectedAmount, setSelectedAmount] = useState(0)
+  const [selectedAmount, setSelectedAmount] = useState(0);
   return (
     <div>
       <SearchHeader />
@@ -33,10 +34,10 @@ const Membership = () => {
             selectedAmount={selectedAmount}
           />
         ) : (
-          "beasky"
+          <MembershipWelcome />
         )}
       </div>
-      <Footer />
+      {currentPage !== 3 && <Footer />}
     </div>
   );
 };
