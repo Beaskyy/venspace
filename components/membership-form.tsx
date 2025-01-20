@@ -11,7 +11,7 @@ import { Calendar } from "./ui/calendar";
 import { format, isBefore, startOfDay } from "date-fns";
 import { cn } from "@/lib/utils";
 import { membershipPlans } from "@/lib/data";
-import { Button } from "./ui";
+import { Button } from "./ui/button";
 
 interface MembershipFormProps {
   setCurrentPage: (currentPage: number) => void;
