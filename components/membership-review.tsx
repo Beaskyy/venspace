@@ -2,7 +2,7 @@ import { Info } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
 import Image from "next/image";
-import { Button } from "./ui";
+import { Button } from "./ui/button";
 import { membershipPlans } from "@/lib/data";
 import { Input } from "./ui/input";
 

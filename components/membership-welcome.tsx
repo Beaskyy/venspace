@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Button } from "./ui";
 import { useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
 export const MembershipWelcome = () => {
   const router = useRouter()
