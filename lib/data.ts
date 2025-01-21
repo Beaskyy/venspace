@@ -125,41 +125,46 @@ export const membershipPlans = [
 ];
 
 export const submenuItems: Record<string, string[]> = {
-    Locations: [
-      "Yaba",
-      "Lekki",
-      "Ebute Metta",
-      "Ikorodu",
-      "Ikoyi",
-      "Victoria Island",
-    ],
-    Activities: [
-      "Photoshoot",
-      "Videoshoot",
-      "Party",
-      "Dinner",
-      "Large Gathering",
-      "Training",
-      "See All",
-    ],
-    "Space Types": [
-      "Content House",
-      "Photo Studio",
-      "Podcast Room",
-      "Party Room",
-    ],
-    Amenities: [
-      "Free WiFi",
-      "Lightening",
-      "Abstract Props",
-      "Wheelchair Accessible",
-      "Graphic Walls",
-    ],
-  };
+  Locations: [
+    "Yaba",
+    "Lekki",
+    "Ebute Metta",
+    "Ikorodu",
+    "Ikoyi",
+    "Victoria Island",
+  ],
+  Activities: [
+    "Photoshoot",
+    "Videoshoot",
+    "Party",
+    "Dinner",
+    "Large Gathering",
+    "Training",
+    "See All",
+  ],
+  "Space Types": [
+    "Content House",
+    "Photo Studio",
+    "Podcast Room",
+    "Party Room",
+  ],
+  Amenities: [
+    "Free WiFi",
+    "Lightening",
+    "Abstract Props",
+    "Wheelchair Accessible",
+    "Graphic Walls",
+  ],
+};
 
 export const listings = [
   {
-    images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-1.jpeg",
+      "/listing-2.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "5.0",
@@ -169,7 +174,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-2.jpeg", "/listing-1.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.9",
@@ -179,7 +189,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-3.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-3.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.6",
@@ -189,7 +204,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-4.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-1.jpeg"],
+    images: [
+      "/listing-4.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-1.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.5",
@@ -199,7 +219,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-1.jpeg",
+      "/listing-2.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "5.0",
@@ -209,7 +234,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-2.jpeg", "/listing-1.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.9",
@@ -219,7 +249,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-3.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-3.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.6",
@@ -229,7 +264,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-4.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-1.jpeg"],
+    images: [
+      "/listing-4.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-1.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.5",
@@ -239,7 +279,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-1.jpeg",
+      "/listing-2.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "5.0",
@@ -249,7 +294,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-2.jpeg", "/listing-1.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.9",
@@ -259,7 +309,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-3.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-3.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.6",
@@ -269,7 +324,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-4.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-1.jpeg"],
+    images: [
+      "/listing-4.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-1.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.5",
@@ -279,7 +339,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-1.jpeg",
+      "/listing-2.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "5.0",
@@ -289,7 +354,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-2.jpeg", "/listing-1.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.9",
@@ -299,7 +369,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-3.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-3.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.6",
@@ -309,7 +384,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-4.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-1.jpeg"],
+    images: [
+      "/listing-4.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-1.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.5",
@@ -319,7 +399,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-1.jpeg",
+      "/listing-2.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "5.0",
@@ -329,7 +414,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-2.jpeg", "/listing-1.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.9",
@@ -339,7 +429,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-3.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-3.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.6",
@@ -349,7 +444,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-4.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-1.jpeg"],
+    images: [
+      "/listing-4.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-1.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.5",
@@ -359,7 +459,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-1.jpeg",
+      "/listing-2.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "5.0",
@@ -369,7 +474,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-2.jpeg", "/listing-1.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.9",
@@ -379,7 +489,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-3.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-3.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.6",
@@ -389,7 +504,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-4.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-1.jpeg"],
+    images: [
+      "/listing-4.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-1.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.5",
@@ -399,7 +519,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-1.jpeg",
+      "/listing-2.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "5.0",
@@ -409,7 +534,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-2.jpeg", "/listing-1.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.9",
@@ -419,7 +549,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-3.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-3.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.6",
@@ -429,7 +564,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-4.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-1.jpeg"],
+    images: [
+      "/listing-4.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-1.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.5",
@@ -439,7 +579,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-1.jpeg", "/listing-2.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-1.jpeg",
+      "/listing-2.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "5.0",
@@ -449,7 +594,12 @@ export const listings = [
     instant: true,
   },
   {
-    images: ["/listing-2.jpeg", "/listing-1.jpeg", "/listing-3.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-3.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.9",
@@ -459,7 +609,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-3.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-4.jpeg"],
+    images: [
+      "/listing-3.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-4.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.6",
@@ -469,7 +624,12 @@ export const listings = [
     instant: false,
   },
   {
-    images: ["/listing-4.jpeg", "/listing-2.jpeg", "/listing-1.jpeg", "/listing-1.jpeg"],
+    images: [
+      "/listing-4.jpeg",
+      "/listing-2.jpeg",
+      "/listing-1.jpeg",
+      "/listing-1.jpeg",
+    ],
     name: "All Exclusive Shanty studios",
     location: "Ikeja, Lagos",
     ratings: "4.5",
@@ -579,5 +739,51 @@ export const profileListings = [
     reviews: 10,
     price: "30,000",
     people: 10,
+  },
+];
+
+export const bookingItems = [
+  { icon: "/sun.svg", text: "Lighting Equipments" },
+  { icon: "/buildings-2.svg", text: "Changing Room" },
+  { icon: "/wifi.svg", text: "WiFi" },
+  { icon: "/video-play.svg", text: "Video Equipment" },
+  { icon: "/winter.svg", text: "Air Conditioning" },
+];
+
+export const addOns = [
+  {
+    id: 1,
+    title: "Camera",
+    description: "2016 Sony camera for photography",
+    price: "₦45,000",
+    image: "/camera.jpeg",
+  },
+  {
+    id: 2,
+    title: "Tripod",
+    description: "Stable tripod for professional shoots",
+    price: "₦10,000",
+    image: "/camera.jpeg",
+  },
+  {
+    id: 3,
+    title: "Lighting Kit",
+    description: "Essential lighting kit for indoor shoots",
+    price: "₦25,000",
+    image: "/camera.jpeg",
+  },
+  {
+    id: 4,
+    title: "Microphone",
+    description: "High-quality microphone for sound recording",
+    price: "₦15,000",
+    image: "/camera.jpeg",
+  },
+  {
+    id: 5,
+    title: "Drone",
+    description: "DJI Drone for aerial photography",
+    price: "₦150,000",
+    image: "/camera.jpeg",
   },
 ];
