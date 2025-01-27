@@ -9,6 +9,17 @@ export const Listing = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
+  const [visibleItems, setVisibleItems] = useState(4);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const scrollContainer = (direction: "left" | "right"): void => {
     const container = containerRef.current;
@@ -38,6 +49,8 @@ export const Listing = () => {
     }
   }, []);
 
+  const listingsToShow = isMobile ? listings.slice(0, visibleItems) : listings;
+
   return (
     <div className="lg:px-[72px] md:p-8 p-4">
       <h4 className="lg:text-[28px] md:text-2xl text-lg text-[#001224] font-bold">
@@ -47,12 +60,12 @@ export const Listing = () => {
         Curated to ensure the highest level of satisfaction
       </p>
 
-      <div className="relative py-4">
+      <div className="relative py-4 group">
         {/* Left Button */}
-        {showLeftButton && (
+        {!isMobile && showLeftButton && (
           <button
             onClick={() => scrollContainer("left")}
-            className="absolute flex justify-center items-center left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full z-20 size-12 shadow-xl"
+            className="absolute flex justify-center items-center left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full z-20 size-12 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             aria-label="Scroll left"
             style={{
               backdropFilter: "blur(5px)",
@@ -64,12 +77,12 @@ export const Listing = () => {
 
         {/* Scrollable Container */}
         <div
-          className="flex overflow-x-auto gap-4 no-scrollbar pb-6 "
+          className="flex md:flex-row md:overflow-x-auto flex-col gap-4 no-scrollbar pb-6"
           ref={containerRef}
-          onScroll={handleScroll}
+          onScroll={!isMobile ? handleScroll : undefined}
           style={{ scrollBehavior: "smooth" }}
         >
-          {listings.map((listing, index) => (
+          {listingsToShow.map((listing, index) => (
             <div
               key={index}
               className="flex flex-col min-w-[312px] rounded-xl"
@@ -81,10 +94,10 @@ export const Listing = () => {
         </div>
 
         {/* Right Button */}
-        {showRightButton && (
+        {!isMobile && showRightButton && (
           <button
             onClick={() => scrollContainer("right")}
-            className="absolute flex justify-center items-center right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full z-20 size-12 shadow-xl"
+            className="absolute flex justify-center items-center right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full z-20 size-12 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             aria-label="Scroll right"
             style={{
               backdropFilter: "blur(5px)",
@@ -92,6 +105,18 @@ export const Listing = () => {
           >
             <ChevronRight className="size-8 text-[#001224]" />
           </button>
+        )}
+
+        {/* Load More Button for Mobile */}
+        {isMobile && visibleItems < listings.length && (
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={() => setVisibleItems((prev) => prev + 4)}
+              className="h-12 w-[130px] border border-[#1A1A1A26] px-6 py-3 text-base text-[#001224] font-medium whitespace-nowrap rounded-lg hover:bg-opacity-90 transition-colors"
+            >
+              Show More
+            </button>
+          </div>
         )}
       </div>
     </div>
