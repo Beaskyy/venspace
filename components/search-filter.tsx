@@ -21,16 +21,38 @@ import {
 import Image from "next/image";
 import { Slider } from "./ui/slider";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 import { CategoryBox } from "./category-box";
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "./ui/button";
 
 export const SearchFilter = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const [range, setRange] = useState([500, 1000000]);
+
+  const amenities = [
+    "Free WiFI",
+    "Lighting Equipments",
+    "Changing Room",
+    "Video Equipment",
+    "Air Conditioning",
+    "Free WiFI",
+    "Wheelchair Accessible",
+  ];
+
+  // Toggle selection of an item
+  const toggleSelection = (item: string) => {
+    setSelectedItems(
+      (prevSelected) =>
+        prevSelected.includes(item)
+          ? prevSelected.filter((i) => i !== item) // Remove item if already selected
+          : [...prevSelected, item] // Add item if not selected
+    );
+  };
 
   const scrollContainer = (direction: "left" | "right") => {
     const container = containerRef.current;
@@ -73,14 +95,16 @@ export const SearchFilter = () => {
     "Production Studio",
   ];
   return (
-    <div className="flex lg:flex-row flex-col justify-between w-full lg:gap-24 gap-12">
-      <div className="flex gap-3">
-        <Button className="w-10 h-[37px] rounded-[46px] bg-[#FDF1C3] py-2 px-3 shadow-none text-[#001224] font-medium hover:bg-[#001224] hover:text-white">
-          <p>All</p>
+    <div className="lg:flex lg:flex-row flex-col justify-between w-full lg:gap-24 gap-12">
+      <div className="flex gap-3 mb-4 md:mb-0">
+        <Button className="md:text-sm text-xs md:w-10 w-7 h-8 md:h-[37px] rounded-[46px] bg-[#FDF1C3] py-2 px-3 shadow-none text-[#001224] font-medium hover:bg-[#001224] hover:text-white">
+          All
         </Button>
-        <div className="relative">
+        <div className="relative w-full">
           {/* Fade Effect */}
-          {showRightButton && <div className="absolute top-0 right-0 h-[71px] w-[185px] bg-[linear-gradient(270deg,_#FFFFFF_25.85%,_rgba(255,_255,_255,_0)_84.92%)] pointer-events-none z-10" />}
+          {showRightButton && (
+            <div className="absolute top-0 right-0 h-[71px] w-[185px] md:bg-[linear-gradient(270deg,_#FFFFFF_25.85%,_rgba(255,_255,_255,_0)_84.92%)] pointer-events-none z-10" />
+          )}
 
           {/* Left Button */}
           {showLeftButton && (
@@ -98,7 +122,7 @@ export const SearchFilter = () => {
 
           {/* Scrollable Container */}
           <div
-            className="flex flex-row justify-between overflow-x-auto lg:w-[765px] w-20 no-scrollbar gap-3 relative"
+            className="flex flex-row justify-between overflow-x-auto md:w-[765px] w-72 no-scrollbar gap-3 relative"
             ref={containerRef}
             onScroll={handleScroll}
             style={{ scrollBehavior: "smooth" }}
@@ -106,7 +130,7 @@ export const SearchFilter = () => {
             {places.map((place, index) => (
               <div
                 key={index}
-                className="border border-[##1A1A1A14] bg-transparent shadow-none py-2 px-4 rounded-[32px] h-[37px] text-[#434242] text-sm leading-[21px] whitespace-nowrap hover:bg-transparent hover:shadow-none cursor-pointer"
+                className="flex justify-center items-center border border-[##1A1A1A14] bg-transparent shadow-none py-2 md:px-4 px-2 rounded-[32px] md:h-[37px] h-8 text-[#434242] md:text-sm text-xs leading-[21px] whitespace-nowrap hover:bg-transparent hover:shadow-none cursor-pointer"
               >
                 <CategoryBox place={place} />
               </div>
@@ -128,9 +152,9 @@ export const SearchFilter = () => {
           )}
         </div>
       </div>
-      <div className="flex md:flex-row flex-col lg:items-center gap-4">
+      <div className="flex flex-row lg:items-center gap-4">
         <Select>
-          <SelectTrigger className="w-[221px] h-11 border-[#1A1A1A26] rounded-xl text-sm text-[#001F3F66]">
+          <SelectTrigger className="md:w-[221px] w-1/2 h-11 border-[#1A1A1A26] rounded-xl text-sm text-[#001F3F66]">
             <SelectValue placeholder="Sort By" />
           </SelectTrigger>
           <SelectContent
@@ -174,7 +198,7 @@ export const SearchFilter = () => {
               </div>
             </DialogTrigger>
             <DialogContent
-              className="w-[483px] rounded-xl p-6"
+              className="w-[483px] rounded-xl p-6 max-h-[90vh] overflow-y-auto"
               style={{ boxShadow: "0px 2px 20px 0px #0000000F" }}
             >
               <DialogHeader>
@@ -187,8 +211,25 @@ export const SearchFilter = () => {
                   <p className="text-sm text-[#434242] font-semibold">
                     Price Range
                   </p>
-                  <Slider max={100} step={1} className="h-[1px]" />
+
+                  <Slider
+                    defaultValue={range}
+                    onValueChange={(values) => setRange(values)}
+                    min={500}
+                    max={1000000}
+                    step={1000}
+                    className="h-[1px]"
+                  />
+                  <div className="flex justify-between text-[#434242] font-medium">
+                    <span>
+                      <strong>₦{range[0].toLocaleString()}</strong>
+                    </span>
+                    <span>
+                      <strong>₦{range[1].toLocaleString()}</strong>
+                    </span>
+                  </div>
                 </div>
+
                 <div className="flex flex-col gap-4 border-t border-b border-[#1A1A1A14]">
                   <p className="text-sm text-[#434242] leading-[21px] pt-4">
                     Number of Guests
@@ -207,34 +248,26 @@ export const SearchFilter = () => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-col gap-6 border-b border-[#1A1A1A14]">
+                <div className="flex flex-col gap-6 pb-6 border-b border-[#1A1A1A14]">
                   <p className="text-sm text-[#434242]">
                     Amenities - included in booking
                   </p>
-                  <div className="flex gap-[18px]">
-                    <div className="border border-[#1A1A1A14] py-2 px-4 rounded-[32px] h-[37px] text-[#434242] text-sm leading-[21px] whitespace-nowrap">
-                      Free WiFI
-                    </div>
-                    <div className="border border-[#1A1A1A] py-2 px-4 rounded-[32px] h-[37px] text-[#434242] text-sm leading-[21px] whitespace-nowrap">
-                      Free WiFI
-                    </div>
-                    <div className="border border-[#1A1A1A14] py-2 px-4 rounded-[32px] h-[37px] text-[#434242] text-sm leading-[21px] whitespace-nowrap">
-                      Free WiFI
-                    </div>
-                    <div className="border border-[#1A1A1A14] py-2 px-4 rounded-[32px] h-[37px] text-[#434242] text-sm leading-[21px] whitespace-nowrap">
-                      Free WiFI
-                    </div>
-                  </div>
-                  <div className="flex gap-[18px]">
-                    <div className="border border-[#1A1A1A14] py-2 px-4 rounded-[32px] h-[37px] text-[#434242] text-sm leading-[21px] whitespace-nowrap">
-                      Free WiFI
-                    </div>
-                    <div className="border border-[#1A1A1A14] py-2 px-4 rounded-[32px] h-[37px] text-[#434242] text-sm leading-[21px] whitespace-nowrap">
-                      Free WiFI
-                    </div>
-                    <div className="border border-[#1A1A1A] py-2 px-4 rounded-[32px] h-[37px] text-[#434242] text-sm leading-[21px] mb-6">
-                      Wheelchair Accessible
-                    </div>
+
+                  <div className="flex flex-wrap gap-[18px]">
+                    {amenities.map((amenity, index) => (
+                      <div
+                        key={index}
+                        onClick={() => toggleSelection(amenity)} // Toggle selection
+                        className={`border py-2 px-4 rounded-[32px] h-[37px] text-[#434242] md:text-sm text-xs leading-[21px] whitespace-nowrap cursor-pointer 
+              ${
+                selectedItems.includes(amenity)
+                  ? "border-[#1A1A1A]" // Selected border color
+                  : "border-[#1A1A1A14]" // Default border color
+              }`}
+                      >
+                        {amenity}
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="flex gap-1.5 border-b border-[#1A1A1A14]">
@@ -253,22 +286,49 @@ export const SearchFilter = () => {
                         Instant Booking
                       </p>
                     </div>
-                    <p className="text-sm text-[#434242CC]">
+                    <p className="md:text-sm text-xs text-[#434242CC]">
                       Only see spaces that can be instantly booked
                     </p>
                   </div>
                 </div>
+                <div className="flex gap-1.5 border-b border-[#1A1A1A14]">
+                  <div>
+                    <Input type="checkbox" className="w-[18px] h-[18px]" />
+                  </div>
+                  <div className="flex items-start flex-col gap-1 pb-4">
+                    <div className="flex items-center gap-1">
+                      <Image
+                        src="flash.svg"
+                        alt="flash"
+                        width={16}
+                        height={16}
+                      />
+                      <p className="text-sm text-[#434242] font-semibold">
+                        Membership
+                      </p>
+                      <Image
+                        src="badges.svg"
+                        alt="badge"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                    <p className="md:text-sm text-xs text-[#434242CC]">
+                      Only see spaces that their host offers membership
+                    </p>
+                  </div>
+                </div>
               </DialogDescription>
-              <DialogFooter className="flex justify-start mt-6">
+              <DialogFooter className="flex flex-row justify-start gap-3 mt-6">
                 <DialogClose asChild>
                   <Button
                     type="button"
-                    className="bg-transparent border border-[##1A1A1A26] text-[#001224] text-sm font-normal leading-[21px] hover:text-white hover:bg-[#001224] hover:border-none mr-3 lg:mr-0 w-fit shadow-none"
+                    className="bg-transparent border w-full border-[##1A1A1A26] text-[#001224] text-sm font-normal leading-[21px] hover:text-white hover:bg-[#001224] hover:border-none shadow-none"
                   >
                     Clear All
                   </Button>
                 </DialogClose>
-                <Button className="bg-[#F44363] w-fit font-medium shadow-none">
+                <Button className="bg-[#F44363] w-full font-medium shadow-none">
                   Show 10 Results
                 </Button>
               </DialogFooter>
