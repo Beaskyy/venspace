@@ -23,7 +23,7 @@ export const Pricing = () => {
   };
 
   const handleSubmit = (): void => {
-    console.log("Raw Value Submitted:", rawValue); // Raw value to submit to the API
+    console.log("Raw Value Submitted:", rawValue);
   };
 
   return (
